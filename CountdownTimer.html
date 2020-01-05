@@ -8,7 +8,10 @@
 	<div id="countdown"></div>
 	<script src="https://cdn.jsdelivr.net/gh/truocphan/CountdownTimer/CountdownTimer.js"></script>
 	<script type="text/javascript">
-		Countdown("11/13/2020 00:00:00");
+		var endTime = new Date("08/06/"+new Date().getFullYear()).getTime();
+		if(endTime < new Date().getTime())
+			endTime = new Date("08/06/"+(new Date().getFullYear()+1)).getTime();
+		COUNTDOWN(endTime);
 	</script>
 </body>
 </html>
