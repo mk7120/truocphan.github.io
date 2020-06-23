@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CORS</title>
+		<script>
+			function cors() {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("data").innerHTML = this.responseText;
+					}
+				};
+				xhttp.open("GET", document.getElementById("url").value, true);
+				xhttp.withCredentials = true;
+				xhttp.send();
+			}
+		</script>
+	</head>
+	<body>
+		<center>
+			<textarea rows="15" cols="65" id="data"></textarea><br>
+			<input id="url"><button onclick="cors()">GET</button>
+		</center>
+	</body>
+</html>
