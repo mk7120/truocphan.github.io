@@ -6,11 +6,20 @@
 </head>
 <body>
 	<div id="countdown"></div>
-	<script src="https://cdn.jsdelivr.net/gh/truocphan/CountdownTimer@5389c2b333484823c505d7705c911671f88f5b9b/CountdownTimer.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/truocphan/CountdownTimer/CountdownTimer.js"></script>
 	<script type="text/javascript">
-		var endTime = new Date("11/18/"+new Date().getFullYear()).getTime();
-		if(endTime < new Date().getTime())
-			endTime = new Date("11/18/"+(new Date().getFullYear()+1)).getTime();
+		var anniversaries = [973702800000, 975344400000, 1615050000000];
+		var endTime = (new Date(anniversaries[0]).setYear(new Date().getFullYear()) < new Date().getTime()) ? (new Date(anniversaries[0]).setYear(new Date().getFullYear() + 1)) : (new Date(anniversaries[0]).setYear(new Date().getFullYear()));
+
+		var nowDate = new Date().getDate()
+		var nowMonth = new Date().getMonth() + 1
+
+		for (i in anniversaries){
+			var tmp_endTime = (new Date(anniversaries[i]).setYear(new Date().getFullYear()) < new Date().getTime()) ? (new Date(anniversaries[i]).setYear(new Date().getFullYear() + 1)) : (new Date(anniversaries[i]).setYear(new Date().getFullYear()))
+			if (tmp_endTime < endTime)
+				endTime = tmp_endTime
+		}
+
 		COUNTDOWN(endTime);
 	</script>
 </body>
