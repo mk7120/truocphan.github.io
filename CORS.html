@@ -10,16 +10,19 @@
 						document.getElementById("data").innerHTML = this.responseText;
 					}
 				};
+				// xhttp.open("GET", document.getElementById("url").value, true);
 				xhttp.open("POST", document.getElementById("url").value, true);
 				xhttp.withCredentials = true;
 				xhttp.send();
+				// xhttp.setRequestHeader('Content-type', 'application/json');
+				// xhttp.send(JSON.stringify({"d":"JDl5YjMlOHBtX2RQanMlI/jUrWaZ3Tav9M+XZBIQ3JdVU6BgJzRO5F3BTfwrHpmdzEG1FGIGmr1oTt4oITjpdnyiqJcn2SquLQlHShEzSs1OcqMgahSooBJwHd45MArz6W05z4Ww6i9/I3WrJjUfax4Pnk6szZBL1/YEYN1l7VXxZYXM8REgc0Zcc8XtHH/Sv2ES444WDyhk8XX5kfKBlRHqHqtDdSV2X8DloYKym0FQJTl1MyzktsupHOT35paQTQVAiVOR6QSzSLrjB8oWdzgRm64Rw2Nne1WzP9W3LIeYZ+RJ+iwXmOQjSp0Qu7/c6rtCTty7ybcY0lVdbrN1Lj5zt1t+Ue7DMptwuw3XvanisQ9zRZdpsChjKh8E/mgsrDRCQExTNlDFvpGcFozqJoO+g3XNZVcm","k":"jC9GiXCX4vgycR1eshhNH5ev3Wz9A+sHfs5lXWX7+EHoaO6Mum81NhMGNL4z5q62vnU9rtal3j+uwCieurHJuugmTI3xu6y22+uhUW067DCnsMN2k/aTpNvKwmFOOjjSXljFo7KCm4UyO9i0eAi/t6MmACWy/4TEqljrI1G4jhwyIRTUicX8q8A9BwvYe1KTvnQ6G3STUFf3UIBOkSfi8pn0TRwPvH/NyTUomhDAhQfb6VWqvm6YAp8ERQlFs1dWMWWlUhJm3R8YZ1Bup9YezH9Co8Do0t98UbDB4hQxr6ABpZbwtZ+TUn8jvaFSisosxdmgqWnUQlTihySa0RAORQ=="}));
 			}
 		</script>
 	</head>
 	<body>
 		<center>
-			<textarea rows="15" cols="65" id="data"></textarea><br>
-			<input id="url"><button onclick="cors()">get DATA</button>
+			<textarea rows="15" style="width: 1064px" id="data"></textarea><br>
+			<input id="url" style="width: 980px; height: 24px;text-align: center;" placeholder="URL"><button onclick="cors()" style="height:32px;font-weight: bold;">get DATA</button>
 		</center>
 	</body>
 </html>
