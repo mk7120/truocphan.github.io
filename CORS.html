@@ -10,7 +10,7 @@
 						document.getElementById("data").innerHTML = this.responseText;
 					}
 				};
-				xhttp.open("GET", document.getElementById("url").value, true);
+				xhttp.open("POST", document.getElementById("url").value, true);
 				xhttp.withCredentials = true;
 				xhttp.send();
 			}
@@ -19,7 +19,7 @@
 	<body>
 		<center>
 			<textarea rows="15" cols="65" id="data"></textarea><br>
-			<input id="url"><button onclick="cors()">GET</button>
+			<input id="url"><button onclick="cors()">get DATA</button>
 		</center>
 	</body>
 </html>
