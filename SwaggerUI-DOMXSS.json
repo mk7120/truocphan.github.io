@@ -1,8 +1,8 @@
 {
-    "url": "truocphan.github.io/SwaggerUI-DOMXSS.yamlx\"",
+    "url": "truocphan.github.io/SwaggerUI-DOMXSS.yamlx\"<h1>H1</h1>",
     "urls": [
         {
-            "url": "truocphan.github.io/SwaggerUI-DOMXSS.yamly\"",
+            "url": "truocphan.github.io/SwaggerUI-DOMXSS.yamly\"<h1>H1</h1>",
             "name": "Swagger UI - DOM-Based XSS"
         }
     ]
